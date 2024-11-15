@@ -1,9 +1,12 @@
 import click
 import numpy as np
-from numpy import pi
 import pandas as pd
+from numpy import pi
 
 
+@click.command()
+# @click.argument("number")
+@click.option("-n", "--numbersteps", default=1)
 def sin(number):
     x = np.linspace(0, 2 * pi, number)
     df = pd.DataFrame({"x": x, "sin (x)": np.sin(x)})
@@ -17,4 +20,5 @@ def tan(number):
 
 
 if __name__ == "__main__":
-    sin(10)
+    sin()
+    tan()
