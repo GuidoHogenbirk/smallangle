@@ -4,15 +4,21 @@ import pandas as pd
 from numpy import pi
 
 
-@click.command()
-# @click.argument("number")
-@click.option("-n", "--numbersteps", default=1)
+@click.group()
+def cmd_group():
+    pass
+
+
+@cmd_group.command()
+@click.option("-n", "--number", default=1)
 def sin(number):
     x = np.linspace(0, 2 * pi, number)
     df = pd.DataFrame({"x": x, "sin (x)": np.sin(x)})
     print(df)
 
 
+@cmd_group.command()
+@click.option("-n", "--number", default=1)
 def tan(number):
     x = np.linspace(0, 2 * pi, number)
     df = pd.DataFrame({"x": x, "tan (x)": np.tan(x)})
