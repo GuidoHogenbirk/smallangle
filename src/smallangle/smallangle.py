@@ -27,5 +27,17 @@ def tan(number):
     print(df)
 
 
+@cmd_group.command()
+@click.argument("number", type=float)
+def approx(number):
+    """determines small-angle approximation with a certain accuracy"""
+    i = 0
+    while np.abs(i - np.sin(i)) <= number:
+        i = i + 0.001
+    print(
+        f"For an accuracy of {number},the small-angle approximation holds up to x = {np.round(i,3)}"
+    )
+
+
 if __name__ == "__main__":
     cmd_group()
